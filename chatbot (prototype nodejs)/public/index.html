@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Zapledge AI Assistant</title>
+
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+
+  <main class="demo-page">
+    <h1>Zapledge International</h1>
+    <p>AI Transformation • AI Engineering • AI Automation</p>
+  </main>
+
+
+  <!-- Floating chat button -->
+  <button
+    id="chatToggle"
+    class="chat-toggle"
+    aria-label="Open AI assistant"
+  >
+    <span class="chat-toggle-icon">✦</span>
+  </button>
+
+
+  <!-- Chat widget -->
+  <section
+    id="chatWidget"
+    class="chat-widget hidden"
+    aria-label="Zapledge AI Assistant"
+  >
+
+    <!-- Header -->
+    <header class="chat-header">
+
+      <div class="assistant-info">
+
+        <div class="assistant-avatar">
+          Z
+        </div>
+
+        <div>
+          <h2>Zapledge AI</h2>
+
+          <div class="status">
+            <span class="status-dot"></span>
+            AI Assistant
+          </div>
+        </div>
+
+      </div>
+
+
+      <button
+        id="closeChat"
+        class="icon-button"
+        aria-label="Close chat"
+      >
+        ×
+      </button>
+
+    </header>
+
+
+    <!-- Messages -->
+    <div
+      id="messages"
+      class="messages"
+      aria-live="polite"
+    >
+
+      <div class="message-row bot-row">
+
+        <div class="message bot-message">
+          Hi 👋 I'm the Zapledge AI Assistant.
+
+          Ask me anything about Zapledge, our services, industries, or capabilities.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Typing indicator -->
+    <div
+      id="typingIndicator"
+      class="typing-container hidden"
+    >
+
+      <div class="typing-bubble">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div>
+
+
+    <!-- Input -->
+    <form
+      id="chatForm"
+      class="chat-input-container"
+    >
+
+      <input
+        id="messageInput"
+        type="text"
+        placeholder="Ask about Zapledge..."
+        autocomplete="off"
+        maxlength="2000"
+      />
+
+      <button
+        id="sendButton"
+        type="submit"
+        aria-label="Send message"
+      >
+        ➤
+      </button>
+
+    </form>
+
+  </section>
+
+
+  <script src="/script.js"></script>
+
+</body>
+</html>
