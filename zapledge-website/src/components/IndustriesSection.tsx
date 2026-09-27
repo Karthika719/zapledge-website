@@ -421,27 +421,26 @@ export const IndustriesSection: React.FC = () => {
                       }`}
                     aria-pressed={isTapped}
                   >
-                    {/* Image reveal layer */}
-                    <span
-                      className={`absolute inset-0 rounded-2xl overflow-hidden transition-[opacity,transform] duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-focus-within:opacity-100 group-focus-within:scale-100 ${isTapped ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-                        }`}
-                      aria-hidden="true"
-                    >
+                    {/* Always-visible thumbnail; the photo itself zooms in
+                        slightly as the item expands on hover/focus/tap */}
+                    <span className="absolute inset-0 rounded-2xl overflow-hidden" aria-hidden="true">
                       <Image
                         src={sec.image}
                         alt=""
                         fill
                         sizes="(max-width: 640px) 45vw, 20vw"
-                        className="object-cover"
+                        className={`object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-focus-within:scale-110 ${isTapped ? 'scale-110' : 'scale-100'
+                          }`}
                       />
-                      <span className="absolute inset-0 bg-gradient-to-b from-[#00003C]/60 via-[#00003C]/10 to-transparent" />
+                      {/* Subtle scrim for label legibility only — image stays natural, no heavy overlay */}
+                      <span
+                        className={`absolute inset-0 bg-gradient-to-b from-[#00003C]/45 to-transparent transition-opacity duration-500 ease-out opacity-70 group-hover:opacity-90 group-focus-within:opacity-90 ${isTapped ? 'opacity-90' : ''
+                          }`}
+                      />
                     </span>
 
                     {/* Label */}
-                    <span
-                      className={`relative z-10 block px-3 sm:px-4 pt-2.5 sm:pt-3 text-sm sm:text-lg lg:text-xl xl:text-[22px] font-bold tracking-tight leading-tight break-words transition-colors duration-300 group-hover:text-white group-focus-within:text-white ${isTapped ? 'text-white' : 'text-[#555555]'
-                        }`}
-                    >
+                    <span className="relative z-10 block px-3 sm:px-4 pt-2.5 sm:pt-3 text-sm sm:text-lg lg:text-xl xl:text-[22px] font-bold tracking-tight leading-tight break-words text-white">
                       {sec.name}
                     </span>
                   </button>

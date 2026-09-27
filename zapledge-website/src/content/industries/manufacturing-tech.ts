@@ -73,32 +73,65 @@ export const bottlenecks = {
     "Each of these fixes plugs into the same underlying system, so solving one bottleneck doesn't create a new disconnected tool to manage.",
 };
 
-export const modules = {
-  label: "What's Included",
-  headline: 'What Modules Are Included in a',
-  headlineAccent: 'Manufacturing Build',
+// Data for the reusable <IndustryModuleIndex> component (see
+// src/components/industry/IndustryModuleIndex.tsx). Descriptions are the
+// exact existing copy carried over unchanged from the previous `items[].body`
+// values above this file's history; only the field name (`body` -> `description`)
+// and the added id/number/image fields are new.
+export const moduleIndex = {
+  heading: 'What Modules Are Included in a Manufacturing Build',
   intro:
     'A typical manufacturing engagement draws from these module groups, scoped to what your operation actually needs rather than deployed all at once.',
-  items: [
+  modules: [
     {
+      id: 'sales-customer-operations',
+      number: '01',
       title: 'Sales & Customer Operations',
-      body: 'CRM & enquiries, quotations, sales orders, and customer-facing order status, so your sales and service teams work from one record instead of chasing updates across departments.',
+      description: 'CRM & enquiries, quotations, sales orders, and customer-facing order status, so your sales and service teams work from one record instead of chasing updates across departments.',
+      image: {
+        src: '/images/industry-details/manufacturing-tech/01-sales-customer-operations.webp',
+        alt: 'Sales & Customer Operations module preview: sales orders list with open enquiries, quotations sent, and order status',
+      },
     },
     {
+      id: 'production-planning',
+      number: '02',
       title: 'Production & Planning',
-      body: 'BOM and routing, production planning software, work order management, and maintenance and asset tracking, keeping the shop floor and the planning desk in sync.',
+      description: 'BOM and routing, production planning software, work order management, and maintenance and asset tracking, keeping the shop floor and the planning desk in sync.',
+      image: {
+        src: '/images/industry-details/manufacturing-tech/02-production-planning.webp',
+        alt: 'Production & Planning module preview: weekly production schedule and work order routing',
+      },
     },
     {
+      id: 'supply-chain-inventory',
+      number: '03',
       title: 'Supply Chain & Inventory',
-      body: 'Procurement, vendor management, and inventory and warehouse management, built around real stock levels rather than end-of-week counts.',
+      description: 'Procurement, vendor management, and inventory and warehouse management, built around real stock levels rather than end-of-week counts.',
+      image: {
+        src: '/images/industry-details/manufacturing-tech/03-supply-chain-inventory.webp',
+        alt: 'Supply Chain & Inventory module preview: live stock levels by material and open purchase orders',
+      },
     },
     {
+      id: 'quality-dispatch',
+      number: '04',
       title: 'Quality & Dispatch',
-      body: "A full quality management system (QMS) alongside dispatch and logistics, and customer service/AMC, so a product doesn't leave the building without a clean paper trail behind it.",
+      description: "A full quality management system (QMS) alongside dispatch and logistics, and customer service/AMC, so a product doesn't leave the building without a clean paper trail behind it.",
+      image: {
+        src: '/images/industry-details/manufacturing-tech/04-quality-dispatch.webp',
+        alt: 'Quality & Dispatch module preview: QC checkpoint pipeline from incoming inspection to dispatch',
+      },
     },
     {
+      id: 'management-visibility',
+      number: '05',
       title: 'Management Visibility',
-      body: 'Dashboards that roll all of the above into one view for whoever needs to see the whole operation at a glance.',
+      description: 'Dashboards that roll all of the above into one view for whoever needs to see the whole operation at a glance.',
+      image: {
+        src: '/images/industry-details/manufacturing-tech/05-management-visibility.webp',
+        alt: 'Management Visibility module preview: plant overview dashboard with OEE, on-time delivery, and order status',
+      },
     },
   ],
 };
