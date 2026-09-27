@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --color-accent: #0033FF;
+  --color-accent-dark: #0022CC;
+  --color-accent-on-dark: #5C7CFF;
+  --color-navy: #00003C;
+  --color-white: #FFFFFF;
+  --color-off-white: #FAFAFA;
+  --color-text-primary: #333333;
+  --color-text-secondary: #555555;
+  --color-border: #E5E5E5;
+  
+  --color-accent-glow: rgba(0, 51, 255, 0.15);
+  --color-accent-soft: rgba(0, 51, 255, 0.05);
+  --color-light-tint: rgba(0, 51, 255, 0.04);
+  --focus-outline: rgba(0, 51, 255, 0.12);
+  
+  --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+@theme {
+  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --color-accent: #0033FF;
+  --color-accent-dark: #0022CC;
+  --color-accent-on-dark: #5C7CFF;
+  --color-navy: #00003C;
+  --color-off-white: #FAFAFA;
+  --color-text-primary: #333333;
+  --color-text-secondary: #555555;
+  --color-border-subtle: #E5E5E5;
+
+  /* About page tokens */
+  --color-accent-strong: #0026C2;
+  --color-periwinkle: #8DA2FF;
+  --color-ink: #45455A;
+  --color-ink-muted: #6B6B80;
+  --color-lavender: #F3F5FF;
+  --color-future-panel: #EDF0FF;
+
+  --animate-data-pulse: data-pulse 1.8s linear infinite;
+  @keyframes data-pulse {
+    to {
+      stroke-dashoffset: -24.5;
+    }
+  }
+}
+
+/* Base resets & typography */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-navy);
+  color: var(--color-text-primary);
+  font-family: var(--font-inter);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Light section subtle gradient wash */
+.light-section-tint {
+  background: radial-gradient(circle at 50% 0%, rgba(0, 51, 255, 0.04) 0%, rgba(255, 255, 255, 0) 70%), #FFFFFF;
+}
+
+/* CTA Gradient utility */
+.bg-cta-gradient {
+  background: linear-gradient(90deg, #0033FF 0%, #00003C 100%);
+}
+
+/* Interactive focus style */
+*:focus-visible {
+  outline: 2px solid var(--focus-outline);
+  outline-offset: 2px;
+}

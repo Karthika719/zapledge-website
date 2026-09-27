@@ -1,0 +1,350 @@
+/* Industries Section Scoped Stage & Scene Styles */
+
+.ind-stage {
+  --on-ink-soft: rgba(238, 241, 242, 0.78);
+  --gold: var(--color-accent-on-dark, #5C7CFF);
+  --ink: var(--color-navy, #00003C);
+  --slate: var(--color-text-secondary, #555555);
+  --hair: var(--color-border, #E5E5E5);
+
+  position: relative;
+  aspect-ratio: 8 / 5;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: var(--ink);
+  background-image: radial-gradient(rgba(238, 241, 242, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.ind-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+  fill: none;
+  stroke: var(--on-ink-soft);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ind-scene.is-active {
+  opacity: 1;
+}
+
+.ind-scene .gold {
+  stroke: var(--gold);
+}
+
+.ind-scene .gold-fill {
+  fill: var(--gold);
+  stroke: none;
+}
+
+.ind-scene .faint {
+  stroke: rgba(238, 241, 242, 0.16);
+  stroke-width: 1.5;
+}
+
+.ind-scene .dashed {
+  stroke-dasharray: 4 7;
+  stroke-width: 2;
+}
+
+.ind-scene text {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  fill: var(--ink);
+  stroke: none;
+}
+
+/* Base pulse and ping keyframes */
+@keyframes ind-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes ind-ping {
+  from {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* ---- Scene 1: Manufacturing Tech (inventory tracking: shelves counted, one low-stock item flagged) ---- */
+.s1 .shelf { stroke: rgba(238, 241, 242, 0.4); }
+.s1 .level { fill: rgba(238, 241, 242, 0.22); stroke: none; }
+.s1 .low-level { fill: var(--gold); }
+.s1 .low { stroke: var(--gold); }
+.s1 .band { fill: var(--gold); opacity: 0.12; stroke: none; }
+.s1 .tick { fill: var(--on-ink-soft); stroke: none; }
+.s1 .scan { opacity: 0; }                       /* static frame: scanner hidden, ticks + flag visible */
+.s1.is-active .scan { animation: s1-scan 8s linear infinite; }
+.s1.is-active .tick { animation: s1-tick 8s linear infinite both; animation-delay: var(--d); }
+.s1.is-active .low { animation: s1-low 8s linear infinite; }
+.s1.is-active .low-level { animation: s1-low-fill 8s linear infinite; }
+.s1.is-active .flag { animation: s1-flag 8s linear infinite; }
+
+@keyframes s1-scan {
+  0% { transform: translateX(96px); opacity: 0; }
+  6% { transform: translateX(96px); opacity: 1; }
+  50% { transform: translateX(544px); opacity: 1; }
+  53%, 100% { transform: translateX(544px); opacity: 0; }
+}
+
+@keyframes s1-tick { 0% { opacity: 0; } 2%, 88% { opacity: 1; } 96%, 100% { opacity: 0; } }
+
+@keyframes s1-low { 0%, 27% { stroke: var(--on-ink-soft); } 29%, 90% { stroke: var(--gold); } 96%, 100% { stroke: var(--on-ink-soft); } }
+
+@keyframes s1-low-fill { 0%, 27% { fill: rgba(238, 241, 242, 0.22); } 29%, 90% { fill: var(--gold); } 96%, 100% { fill: rgba(238, 241, 242, 0.22); } }
+
+@keyframes s1-flag { 0%, 29% { opacity: 0; } 33%, 90% { opacity: 1; } 96%, 100% { opacity: 0; } }
+
+/* ---- Scene 2: FinTech (one unusual transaction in a stream) ---- */
+.s2 .chart {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.s2 .stream {
+  stroke: rgba(238, 241, 242, 0.5);
+  stroke-width: 7;
+  stroke-dasharray: 0.1 25.9;
+}
+
+.s2 .ping {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.s2.is-active .chart {
+  animation: s2-draw 8s linear infinite;
+}
+
+.s2.is-active .mark {
+  animation: s2-mark 8s linear infinite;
+}
+
+.s2.is-active .stream {
+  animation: s2-stream 0.9s linear infinite;
+}
+
+.s2.is-active .ping {
+  animation: ind-ping 1.6s ease-out infinite;
+}
+
+@keyframes s2-draw {
+  0% { stroke-dashoffset: 1; opacity: 1; }
+  70% { stroke-dashoffset: 0; opacity: 1; }
+  92% { stroke-dashoffset: 0; opacity: 1; }
+  98% { stroke-dashoffset: 0; opacity: 0; }
+  100% { stroke-dashoffset: 1; opacity: 0; }
+}
+
+@keyframes s2-mark {
+  0%, 50% { opacity: 0; }
+  54%, 92% { opacity: 1; }
+  98%, 100% { opacity: 0; }
+}
+
+@keyframes s2-stream {
+  to { stroke-dashoffset: -26; }
+}
+
+/* ---- Scene 3: WealthTech (allocation rebalancing) ---- */
+.s3 .seg {
+  stroke-width: 26;
+  stroke-linecap: butt;
+}
+
+.s3 .a {
+  stroke-dasharray: 42 58;
+  stroke-dashoffset: 0;
+}
+
+.s3 .b {
+  stroke-dasharray: 28 72;
+  stroke-dashoffset: -44;
+}
+
+.s3 .c {
+  stroke-dasharray: 24 76;
+  stroke-dashoffset: -74;
+  stroke: rgba(238, 241, 242, 0.4);
+}
+
+.s3 .bar {
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+
+.s3 .bar-a {
+  transform: scaleX(0.84);
+}
+
+.s3 .bar-b {
+  transform: scaleX(0.56);
+}
+
+.s3 .bar-c {
+  transform: scaleX(0.48);
+}
+
+.s3.is-active .a {
+  animation: s3-a 8s ease-in-out infinite;
+}
+
+.s3.is-active .b {
+  animation: s3-b 8s ease-in-out infinite;
+}
+
+.s3.is-active .c {
+  animation: s3-c 8s ease-in-out infinite;
+}
+
+.s3.is-active .bar-a {
+  animation: s3-bar-a 8s ease-in-out infinite;
+}
+
+.s3.is-active .bar-b {
+  animation: s3-bar-b 8s ease-in-out infinite;
+}
+
+.s3.is-active .bar-c {
+  animation: s3-bar-c 8s ease-in-out infinite;
+}
+
+@keyframes s3-a {
+  0%, 5% { stroke-dasharray: 42 58; }
+  20%, 55% { stroke-dasharray: 30 70; }
+  70%, 100% { stroke-dasharray: 42 58; }
+}
+
+@keyframes s3-b {
+  0%, 5% { stroke-dasharray: 28 72; stroke-dashoffset: -44; }
+  20%, 55% { stroke-dasharray: 44 56; stroke-dashoffset: -32; }
+  70%, 100% { stroke-dasharray: 28 72; stroke-dashoffset: -44; }
+}
+
+@keyframes s3-c {
+  0%, 5% { stroke-dasharray: 24 76; stroke-dashoffset: -74; }
+  20%, 55% { stroke-dasharray: 20 80; stroke-dashoffset: -78; }
+  70%, 100% { stroke-dasharray: 24 76; stroke-dashoffset: -74; }
+}
+
+@keyframes s3-bar-a {
+  0%, 5% { transform: scaleX(0.84); }
+  20%, 55% { transform: scaleX(0.6); }
+  70%, 100% { transform: scaleX(0.84); }
+}
+
+@keyframes s3-bar-b {
+  0%, 5% { transform: scaleX(0.56); }
+  20%, 55% { transform: scaleX(0.88); }
+  70%, 100% { transform: scaleX(0.56); }
+}
+
+@keyframes s3-bar-c {
+  0%, 5% { transform: scaleX(0.48); }
+  20%, 55% { transform: scaleX(0.4); }
+  70%, 100% { transform: scaleX(0.48); }
+}
+
+/* ---- Scene 4: HealthTech (pulse becomes an organized record) ---- */
+.s4 .ecg {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.s4 .row {
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+
+.s4.is-active .ecg {
+  animation: s4-ecg 8s linear infinite;
+}
+
+.s4.is-active .link {
+  animation: s4-link 8s linear infinite;
+}
+
+.s4.is-active .row {
+  animation: s4-row 8s cubic-bezier(0.3, 0.7, 0.2, 1) infinite;
+}
+
+.s4.is-active .row:nth-of-type(3) {
+  animation-delay: 0.2s;
+}
+
+.s4.is-active .row:nth-of-type(4) {
+  animation-delay: 0.4s;
+}
+
+.s4.is-active .row:nth-of-type(5) {
+  animation-delay: 0.6s;
+}
+
+.s4.is-active .row:nth-of-type(6) {
+  animation-delay: 0.8s;
+}
+
+.s4.is-active .done {
+  animation: s4-done 8s linear infinite;
+}
+
+@keyframes s4-ecg {
+  0% { stroke-dashoffset: 1; opacity: 1; }
+  38% { stroke-dashoffset: 0; opacity: 1; }
+  92% { stroke-dashoffset: 0; opacity: 1; }
+  98% { stroke-dashoffset: 0; opacity: 0; }
+  100% { stroke-dashoffset: 1; opacity: 0; }
+}
+
+@keyframes s4-link {
+  0%, 36% { opacity: 0; }
+  42%, 92% { opacity: 1; }
+  98%, 100% { opacity: 0; }
+}
+
+@keyframes s4-row {
+  0%, 40% { transform: scaleX(0); }
+  52%, 90% { transform: scaleX(1); }
+  97%, 100% { transform: scaleX(0); }
+}
+
+@keyframes s4-done {
+  0%, 72% { opacity: 0; }
+  78%, 92% { opacity: 1; }
+  98%, 100% { opacity: 0; }
+}
+
+/* When the section is off-screen, pause animations */
+.ind-stage.is-paused * {
+  animation-play-state: paused !important;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .ind-stage *,
+  .ind-stage *::before,
+  .ind-stage *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .sec-ind-cell,
+  .sec-ind-item,
+  .sec-ind-item * {
+    transition: none !important;
+  }
+}
+

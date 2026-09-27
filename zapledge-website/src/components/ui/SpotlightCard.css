@@ -1,0 +1,24 @@
+.spotlight-card-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.spotlight-card-wrapper:hover {
+  transform: translateY(-2px);
+}
+
+.spotlight-card-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.spotlight-card-wrapper:hover .spotlight-card-overlay {
+  opacity: 1;
+}
+
