@@ -378,54 +378,112 @@
   color: var(--wwd-navy);
 }
 
-/* Mobile vertical list */
-.wwd-nav-mobile {
-  position: relative;
+/* ==========================================================================
+   Mobile carousel — a completely separate structure from the desktop/tablet
+   stage + nav (those are simply hidden below 768px, see the mobile media
+   query). All four slides stay mounted; overflow-x + scroll-snap give
+   native manual swipe/touch for free, no custom drag logic needed.
+   ========================================================================== */
+.wwd-carousel-mobile {
   display: none;
-  border: 1px solid var(--wwd-track);
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--wwd-bg);
 }
 
-.wwd-nav-mobile-bar {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 3.5px;
-  height: 56px;
-  border-radius: 0 4px 4px 0;
-  background: var(--wwd-blue);
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  z-index: 2;
+.wwd-carousel-track {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-.wwd-tab--mobile {
+.wwd-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.wwd-carousel-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+}
+
+.wwd-carousel-image {
   position: relative;
-  z-index: 1;
-  min-height: 56px;
+  width: calc(100% - 32px);
+  max-width: 360px;
+  height: 220px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--wwd-navy);
+  box-shadow: 0 12px 32px -10px rgba(10, 11, 61, 0.2);
+}
+
+.wwd-carousel-slide .wwd-service-name {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.wwd-carousel-slide .wwd-service-desc {
+  margin-top: 10px;
+  text-align: center;
+  max-width: 100%;
+}
+
+.wwd-carousel-slide .wwd-learn-more {
+  margin-top: 12px;
+  align-self: center;
+}
+
+.wwd-carousel-dots {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 0 14px;
-  border-bottom: 1px solid var(--wwd-track);
-  transition: background-color 0.2s ease;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
 }
 
-.wwd-tab--mobile:last-child {
-  border-bottom: none;
+.wwd-carousel-dot {
+  position: relative;
+  appearance: none;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 999px;
+  background: var(--wwd-track);
+  cursor: pointer;
+  transition: background-color 0.2s ease, width 0.2s ease;
 }
 
-.wwd-tab--mobile[data-active='true'] {
-  background: #ffffff;
+/* Enlarge the tap target well past the visual dot, without changing its size */
+.wwd-carousel-dot::before {
+  content: '';
+  position: absolute;
+  inset: -14px;
 }
 
-.wwd-tab--mobile .wwd-tab-number {
-  font-size: 13px;
+.wwd-carousel-dot[data-active='true'] {
+  width: 22px;
+  background: var(--wwd-blue);
 }
 
-.wwd-tab--mobile .wwd-tab-title {
-  font-size: 16.5px;
+.wwd-carousel-dot:focus-visible {
+  outline: 2px solid var(--wwd-blue);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wwd-carousel-track {
+    scroll-behavior: auto;
+  }
 }
 
 /* ==========================================================================
@@ -436,68 +494,25 @@
     padding: 48px 16px;
   }
 
-  .wwd-visual {
-    height: 294px;
-  }
-
-  .wwd-word-layer {
-    height: 84px;
-  }
-
-  .wwd-index {
+  /* The desktop/tablet editorial stage (large word, knockout image, crossfade
+     copy) and its nav are replaced entirely by the carousel below. */
+  .wwd-stage,
+  .wwd-nav {
     display: none;
   }
 
-  /* min() with a fluid fallback keeps each word from ever exceeding the
-     viewport on narrow phones, while still reaching the exact spec size
-     (59/74/77/80px) once the screen is wide enough to fit it. */
-  .wwd-word[data-word='transform'] {
-    font-size: min(59px, calc((100vw - 40px) / 6.2));
-  }
-  .wwd-word[data-word='build'] {
-    font-size: min(74px, calc((100vw - 40px) / 4.95));
-  }
-  .wwd-word[data-word='automate'] {
-    font-size: min(77px, calc((100vw - 40px) / 4.71));
-  }
-  .wwd-word[data-word='connect'] {
-    font-size: min(80px, calc((100vw - 40px) / 4.54));
-  }
-
-  .wwd-image {
-    top: 44px;
-    left: 40px;
-    width: calc(100% - 40px);
-    height: 250px;
-  }
-
-  .wwd-image .wwd-word-layer {
-    left: -42px;
-    top: -44px;
-  }
-
-  .wwd-stage {
+  .wwd-carousel-mobile {
+    display: block;
     margin-top: 28px;
   }
 
-  .wwd-copy {
-    margin-top: 26px;
-  }
-
+  /* Reused from the desktop/tablet copy block for visual consistency. */
   .wwd-service-desc {
     font-size: 16.5px;
   }
 
   .wwd-learn-more {
     font-size: 16px;
-  }
-
-  .wwd-nav {
-    margin-top: 28px;
-  }
-
-  .wwd-nav-mobile {
-    display: block;
   }
 }
 

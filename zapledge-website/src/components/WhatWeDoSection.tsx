@@ -87,7 +87,14 @@ export const WhatWeDoSection: React.FC = () => {
 
   const desktopTabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const tabletTabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const mobileTabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  // Mobile carousel — independent of `activeIndex` (which only drives the
+  // desktop/tablet crossfade), since the carousel keeps all four slides in
+  // the DOM at once and tracks its own current slide via scroll position.
+  const [mobileActiveIndex, setMobileActiveIndex] = useState<number>(0);
+  const carouselTrackRef = useRef<HTMLUListElement>(null);
+  const carouselSlideRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const mobileDotRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const handleSelect = useCallback((index: number) => {
     if (hoverTimeoutRef.current) {
@@ -117,13 +124,34 @@ export const WhatWeDoSection: React.FC = () => {
     }
   };
 
+  const scrollToSlide = (index: number) => {
+    const slide = carouselSlideRefs.current[index];
+    if (!slide) return;
+    const reduceMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    slide.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
+  };
+
+  const goToSlide = (index: number) => {
+    setMobileActiveIndex(index);
+    scrollToSlide(index);
+  };
+
   const focusTab = (index: number) => {
-    const candidates = [
-      desktopTabRefs.current[index],
-      tabletTabRefs.current[index],
-      mobileTabRefs.current[index],
-    ];
-    candidates.find((el) => el && el.offsetParent !== null)?.focus();
+    const desktopEl = desktopTabRefs.current[index];
+    if (desktopEl && desktopEl.offsetParent !== null) {
+      desktopEl.focus();
+      return;
+    }
+    const tabletEl = tabletTabRefs.current[index];
+    if (tabletEl && tabletEl.offsetParent !== null) {
+      tabletEl.focus();
+      return;
+    }
+    const dotEl = mobileDotRefs.current[index];
+    if (dotEl && dotEl.offsetParent !== null) {
+      goToSlide(index);
+      dotEl.focus();
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -204,6 +232,30 @@ export const WhatWeDoSection: React.FC = () => {
       window.removeEventListener('resize', update);
       mq.removeEventListener('change', update);
     };
+  }, []);
+
+  // Sync the pagination dots to whichever slide is actually centered as the
+  // person swipes the mobile carousel (native scroll, not a JS-driven drag).
+  useEffect(() => {
+    const track = carouselTrackRef.current;
+    if (!track || typeof IntersectionObserver === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+            const idx = Number((entry.target as HTMLElement).dataset.index);
+            if (!Number.isNaN(idx)) setMobileActiveIndex(idx);
+          }
+        });
+      },
+      { root: track, threshold: [0.6] }
+    );
+
+    const slides = carouselSlideRefs.current.filter((el): el is HTMLLIElement => el !== null);
+    slides.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
   }, []);
 
   const renderWordLayer = (isKnockout: boolean) => (
@@ -414,33 +466,67 @@ export const WhatWeDoSection: React.FC = () => {
               );
             })}
           </div>
+        </div>
 
-          {/* Mobile: vertical list, left sliding bar */}
-          <div role="tablist" aria-label="Service navigation" className="wwd-nav-mobile">
-            <div
-              className="wwd-nav-mobile-bar"
-              aria-hidden="true"
-              style={{ transform: `translateY(calc(${activeIndex} * 56px))` }}
-            />
+        {/* Mobile: swipeable carousel — replaces the desktop/tablet stage + nav
+            entirely below 768px. All four slides stay mounted; native
+            overflow-x + scroll-snap gives manual swipe/touch for free. */}
+        <div
+          className="wwd-carousel-mobile"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Our services"
+        >
+          <ul className="wwd-carousel-track" ref={carouselTrackRef}>
+            {services.map((svc, idx) => (
+              <li
+                key={svc.id}
+                ref={(el) => { carouselSlideRefs.current[idx] = el; }}
+                data-index={idx}
+                id={`mobile-slide-${idx}`}
+                className="wwd-carousel-slide"
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${idx + 1} of ${services.length}: ${svc.title}`}
+              >
+                <div className="wwd-carousel-image">
+                  <Image
+                    src={svc.image}
+                    alt={svc.alt}
+                    fill
+                    sizes="(max-width: 767px) 100vw"
+                    priority={idx === 0}
+                    loading={idx === 0 ? 'eager' : 'lazy'}
+                    draggable={false}
+                    className="object-cover"
+                  />
+                </div>
+                <h3 className="wwd-service-name">{svc.title}</h3>
+                <p className="wwd-service-desc">{svc.body}</p>
+                <Link href={svc.href} className="wwd-learn-more">
+                  <span>Learn more</span>
+                  <span className="wwd-learn-more-arrow" aria-hidden="true">→</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className="wwd-carousel-dots" role="tablist" aria-label="Service navigation">
             {services.map((svc, idx) => {
-              const isActive = activeIndex === idx;
+              const isActive = mobileActiveIndex === idx;
               return (
                 <button
                   key={svc.id}
-                  ref={(el) => { mobileTabRefs.current[idx] = el; }}
-                  id={`service-tab-mobile-${idx}`}
+                  ref={(el) => { mobileDotRefs.current[idx] = el; }}
                   type="button"
                   role="tab"
                   aria-selected={isActive}
-                  aria-controls={`service-panel-${idx}`}
-                  tabIndex={0}
-                  onClick={() => handleSelect(idx)}
-                  className="wwd-tab wwd-tab--mobile"
+                  aria-controls={`mobile-slide-${idx}`}
+                  aria-label={svc.title}
+                  className="wwd-carousel-dot"
                   data-active={isActive}
-                >
-                  <span className="wwd-tab-number">({svc.number})</span>
-                  <span className="wwd-tab-title">{svc.title}</span>
-                </button>
+                  onClick={() => goToSlide(idx)}
+                />
               );
             })}
           </div>
