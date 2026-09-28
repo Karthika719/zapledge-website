@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zapledge International — Practical AI Solutions",
-  description: "B2B AI consulting, engineering, automation, and IoT company in Kochi, Kerala.",
+  title: "Zapledge International Pvt Ltd | AI Consulting, AI Solutions, Automation & IoT | Kochi, Kerala",
+  description: "Zapledge International Pvt Ltd helps businesses solve real business challenges with practical AI: consulting, engineering, automation, and intelligent operations. Based in Kochi, Kerala.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

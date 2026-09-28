@@ -7,11 +7,10 @@ import Modules from '@/components/industry/construction/Modules';
 import Workflow from '@/components/industry/construction/Workflow';
 import Faq from '@/components/industry/construction/Faq';
 import CTA from '@/components/industry/construction/CTA';
-import { hero } from '@/content/industries/construction';
-
 export const metadata: Metadata = {
-  title: 'Construction Tech Software & Automation',
-  description: hero.subheadline,
+  title: 'AI-Powered Construction Software & Automation | Zapledge',
+  description:
+    'Zapledge builds AI-powered construction software for project planning, procurement, site tracking, quality, and billing. Get a free consultation.',
 };
 
 export default function ConstructionPage() {

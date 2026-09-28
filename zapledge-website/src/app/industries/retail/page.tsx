@@ -7,11 +7,10 @@ import Modules from '@/components/industry/retail/Modules';
 import Workflow from '@/components/industry/retail/Workflow';
 import Faq from '@/components/industry/retail/Faq';
 import CTA from '@/components/industry/retail/CTA';
-import { hero } from '@/content/industries/retail';
-
 export const metadata: Metadata = {
-  title: 'Retail Tech Software & Inventory Automation',
-  description: hero.subheadline,
+  title: 'AI-Powered Retail Software & Inventory Automation | Zapledge',
+  description:
+    "Zapledge builds AI-powered retail software for POS, inventory, e-commerce, and customer loyalty, scoped to fit any store's budget. Get a free consultation.",
 };
 
 export default function RetailTechPage() {

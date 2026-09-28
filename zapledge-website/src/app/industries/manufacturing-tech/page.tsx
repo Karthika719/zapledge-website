@@ -7,11 +7,10 @@ import Modules from '@/components/industry/manufacturing-tech/Modules';
 import Workflow from '@/components/industry/manufacturing-tech/Workflow';
 import Faq from '@/components/industry/manufacturing-tech/Faq';
 import CTA from '@/components/industry/manufacturing-tech/CTA';
-import { hero } from '@/content/industries/manufacturing-tech';
-
 export const metadata: Metadata = {
-  title: 'Manufacturing Tech',
-  description: hero.subheadline,
+  title: 'AI-Powered Manufacturing Software & Automation | Zapledge',
+  description:
+    'Zapledge builds AI-powered manufacturing software and automation, connecting ERP, production planning, quality, and dispatch in one system. Get a free consultation.',
 };
 
 export default function ManufacturingTechPage() {

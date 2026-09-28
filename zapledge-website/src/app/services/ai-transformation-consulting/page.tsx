@@ -1,5 +1,4 @@
-import { Metadata } from 'next';
-import { aiTransformationConsultingMeta } from '@/content/services/ai-transformation-consulting';
+import type { Metadata } from 'next';
 import Hero from '@/components/services/ai-transformation-consulting/Hero';
 import Overview from '@/components/services/ai-transformation-consulting/Overview';
 import Capabilities from '@/components/services/ai-transformation-consulting/Capabilities';
@@ -10,8 +9,9 @@ import Faq from '@/components/services/ai-transformation-consulting/Faq';
 import CTA from '@/components/services/ai-transformation-consulting/CTA';
 
 export const metadata: Metadata = {
-  title: aiTransformationConsultingMeta.title,
-  description: aiTransformationConsultingMeta.description,
+  title: 'AI Transformation & Consulting Services | Zapledge International, Kochi, Kerala',
+  description:
+    "Identify where AI can create real business impact. Zapledge's AI transformation and consulting services cover strategy, readiness, roadmaps, and adoption, for businesses across India and the GCC.",
 };
 
 export default function AITransformationConsultingPage() {

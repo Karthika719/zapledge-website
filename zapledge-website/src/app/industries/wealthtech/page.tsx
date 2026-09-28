@@ -7,11 +7,10 @@ import Modules from '@/components/industry/wealthtech/Modules';
 import Workflow from '@/components/industry/wealthtech/Workflow';
 import Faq from '@/components/industry/wealthtech/Faq';
 import CTA from '@/components/industry/wealthtech/CTA';
-import { hero } from '@/content/industries/wealthtech';
-
 export const metadata: Metadata = {
-  title: 'WealthTech Software & Advisor Tools',
-  description: hero.subheadline,
+  title: 'AI-Powered WealthTech Software & Advisor Tools | Zapledge',
+  description:
+    'Zapledge builds AI-powered wealthtech software for client onboarding, portfolios, research, and compliance, with advisors always in control. Get a free consultation.',
 };
 
 export default function WealthTechPage() {

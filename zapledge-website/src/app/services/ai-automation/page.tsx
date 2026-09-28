@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { aiAutomationMeta } from '@/content/services/ai-automation';
 import Hero from '@/components/services/ai-automation/Hero';
 import Overview from '@/components/services/ai-automation/Overview';
 import Capabilities from '@/components/services/ai-automation/Capabilities';
@@ -10,8 +9,9 @@ import Faq from '@/components/services/ai-automation/Faq';
 import CTA from '@/components/services/ai-automation/CTA';
 
 export const metadata: Metadata = {
-  title: aiAutomationMeta.title,
-  description: aiAutomationMeta.description,
+  title: 'AI Automation Services | Business Process & Workflow Automation | Zapledge, Kochi',
+  description:
+    'Zapledge automates repetitive workflows, documents, approvals, and everyday tasks with AI, reducing manual work while keeping people in control of what matters.',
 };
 
 export default function AIAutomationPage() {

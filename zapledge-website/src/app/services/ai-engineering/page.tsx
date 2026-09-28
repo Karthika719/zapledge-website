@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { aiEngineeringMeta } from '@/content/services/ai-engineering';
 import Hero from '@/components/services/ai-engineering/Hero';
 import Overview from '@/components/services/ai-engineering/Overview';
 import Capabilities from '@/components/services/ai-engineering/Capabilities';
@@ -10,8 +9,9 @@ import Faq from '@/components/services/ai-engineering/Faq';
 import CTA from '@/components/services/ai-engineering/CTA';
 
 export const metadata: Metadata = {
-  title: aiEngineeringMeta.title,
-  description: aiEngineeringMeta.description,
+  title: 'AI Engineering Services | Custom AI Applications & Systems | Zapledge, Kochi, Kerala',
+  description:
+    'Zapledge designs and builds production-ready AI applications, agents, and enterprise systems for real business workflows, serving Manufacturing, FinTech, WealthTech, and HealthTech businesses.',
 };
 
 export default function AIEngineeringPage() {

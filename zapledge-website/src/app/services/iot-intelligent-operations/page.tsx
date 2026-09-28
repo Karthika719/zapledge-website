@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { iotIntelligentOperationsMeta } from '@/content/services/iot-intelligent-operations';
 import Hero from '@/components/services/iot-intelligent-operations/Hero';
 import Overview from '@/components/services/iot-intelligent-operations/Overview';
 import Capabilities from '@/components/services/iot-intelligent-operations/Capabilities';
@@ -10,8 +9,9 @@ import Faq from '@/components/services/iot-intelligent-operations/Faq';
 import CTA from '@/components/services/iot-intelligent-operations/CTA';
 
 export const metadata: Metadata = {
-  title: iotIntelligentOperationsMeta.title,
-  description: iotIntelligentOperationsMeta.description,
+  title: 'IoT & Intelligent Operations Services | Connected Machines & Monitoring | Zapledge, Kochi',
+  description:
+    'Zapledge connects machines, sensors, and physical operations to intelligent software: real-time monitoring, dashboards, and predictive alerts for manufacturing and industrial businesses.',
 };
 
 export default function IoTIntelligentOperationsPage() {

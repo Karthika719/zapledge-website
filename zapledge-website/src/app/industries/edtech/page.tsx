@@ -7,11 +7,10 @@ import Modules from '@/components/industry/edtech/Modules';
 import Workflow from '@/components/industry/edtech/Workflow';
 import Faq from '@/components/industry/edtech/Faq';
 import CTA from '@/components/industry/edtech/CTA';
-import { hero } from '@/content/industries/edtech';
-
 export const metadata: Metadata = {
-  title: 'EdTech Software & Learning Operations',
-  description: hero.subheadline,
+  title: 'AI-Powered EdTech Software & Learning Operations | Zapledge',
+  description:
+    'Zapledge builds AI-powered edtech software for admissions, learning management, assessments, and fees, with teachers always in the loop. Get a free consultation.',
 };
 
 export default function EdTechPage() {

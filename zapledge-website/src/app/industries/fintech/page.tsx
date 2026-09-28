@@ -7,11 +7,10 @@ import Modules from '@/components/industry/fintech/Modules';
 import Workflow from '@/components/industry/fintech/Workflow';
 import Faq from '@/components/industry/fintech/Faq';
 import CTA from '@/components/industry/fintech/CTA';
-import { hero } from '@/content/industries/fintech';
-
 export const metadata: Metadata = {
-  title: 'FinTech Software & Compliance Automation',
-  description: hero.subheadline,
+  title: 'AI-Powered FinTech Software & Compliance Automation',
+  description:
+    'Zapledge builds AI-powered fintech software for onboarding, payments, lending, and compliance automation, built for audit-ready operations. Get a free consultation.',
 };
 
 export default function FinTechPage() {

@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import AnimatedButton from './ui/AnimatedButton';
 
 type DropdownType = 'what-we-do' | 'industries' | null;
 
@@ -17,7 +16,7 @@ export interface NavLinkItem {
 const whatWeDoServices: NavLinkItem[] = [
   { label: 'AI Transformation & Consulting', href: '/services/ai-transformation-consulting' },
   { label: 'AI Engineering', href: '/services/ai-engineering' },
-  { label: 'AI Automation', href: '/services/ai-automation ' },
+  { label: 'AI Automation', href: '/services/ai-automation' },
   { label: 'IoT & Intelligent Operations', href: '/services/iot-intelligent-operations' },
 ];
 
@@ -149,7 +148,20 @@ export const NavBar: React.FC = () => {
           </Link>
 
           {/* Center: Desktop Navigation Links (Hidden on mobile) */}
-          <div className="hidden md:flex items-center gap-2 lg:gap-4">
+          <div className="hidden md:flex items-center gap-1.5 lg:gap-3">
+            {/* Home Link */}
+            <Link
+              href="/"
+              aria-current={pathname === '/' ? 'page' : undefined}
+              className={`px-3 py-2 rounded-xl text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0033FF]/20 ${
+                pathname === '/'
+                  ? 'bg-[#0033FF]/10 text-[#0033FF] font-semibold'
+                  : 'font-medium text-[#333333] hover:text-[#0033FF] hover:bg-[#0033FF]/5'
+              }`}
+            >
+              Home
+            </Link>
+
             {/* What We Do Dropdown Anchor */}
             <div
               className="relative"
@@ -301,15 +313,7 @@ export const NavBar: React.FC = () => {
               )}
             </div>
 
-            {/* Why Zapledge Plain Link */}
-            <Link
-              href="/#why-zapledge"
-              className="px-3 py-2 rounded-xl text-sm font-medium text-[#333333] hover:text-[#0033FF] hover:bg-[#0033FF]/5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0033FF]/20"
-            >
-              Why Zapledge
-            </Link>
-
-            {/* About Zapledge Plain Link */}
+            {/* About Link */}
             <Link
               href="/about"
               aria-current={pathname === '/about' ? 'page' : undefined}
@@ -319,20 +323,34 @@ export const NavBar: React.FC = () => {
                   : 'font-medium text-[#333333] hover:text-[#0033FF] hover:bg-[#0033FF]/5'
               }`}
             >
-              About Zapledge
+              About
             </Link>
-          </div>
 
-          {/* Right: Desktop CTA Button (Hidden on mobile) */}
-          <div className="hidden md:flex items-center gap-3">
-            <AnimatedButton
-              href="/contact"
-              variant="primary"
-              size="sm"
-              className="shadow-sm font-semibold tracking-wide"
+            {/* Blogs Link */}
+            <Link
+              href="/blog"
+              aria-current={pathname.startsWith('/blog') ? 'page' : undefined}
+              className={`px-3 py-2 rounded-xl text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0033FF]/20 ${
+                pathname.startsWith('/blog')
+                  ? 'bg-[#0033FF]/10 text-[#0033FF] font-semibold'
+                  : 'font-medium text-[#333333] hover:text-[#0033FF] hover:bg-[#0033FF]/5'
+              }`}
             >
-              Get Free Consultation
-            </AnimatedButton>
+              Blogs
+            </Link>
+
+            {/* Contact Link */}
+            <Link
+              href="/contact"
+              aria-current={pathname === '/contact' ? 'page' : undefined}
+              className={`px-3 py-2 rounded-xl text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0033FF]/20 ${
+                pathname === '/contact'
+                  ? 'bg-[#0033FF]/10 text-[#0033FF] font-semibold'
+                  : 'font-medium text-[#333333] hover:text-[#0033FF] hover:bg-[#0033FF]/5'
+              }`}
+            >
+              Contact
+            </Link>
           </div>
 
           {/* Right: Mobile Hamburger Menu Button (Hidden on desktop) */}
@@ -410,6 +428,21 @@ export const NavBar: React.FC = () => {
 
             {/* Scrollable Accordion Categories & Links */}
             <div className="overflow-y-auto px-6 py-4 divide-y divide-[#E5E5E5]/70 flex-1">
+              {/* Item 1: Home (Direct Link) */}
+              <div className="py-2">
+                <Link
+                  href="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-current={pathname === '/' ? 'page' : undefined}
+                  className={`w-full py-3 flex items-center justify-between text-base font-bold transition-colors ${
+                    pathname === '/' ? 'text-[#0033FF]' : 'text-[#00003C] hover:text-[#0033FF]'
+                  }`}
+                >
+                  <span>Home</span>
+                  <span className="text-gray-400 font-normal">→</span>
+                </Link>
+              </div>
+
               {/* Category 1: What We Do (Accordion) */}
               <div className="py-2">
                 <button
@@ -512,57 +545,50 @@ export const NavBar: React.FC = () => {
                 </div>
               </div>
 
-              {/* Category 3: Why Zapledge (Direct Link) */}
-              <div className="py-2">
-                <Link
-                  href="/#why-zapledge"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full py-3 flex items-center justify-between text-base font-bold text-[#00003C] hover:text-[#0033FF] transition-colors"
-                >
-                  <span>Why Zapledge</span>
-                  <span className="text-gray-400 font-normal">→</span>
-                </Link>
-              </div>
-
-              {/* Category 4: About Zapledge (Direct Link) */}
+              {/* Item 4: About (Direct Link) */}
               <div className="py-2">
                 <Link
                   href="/about"
                   onClick={() => setMobileMenuOpen(false)}
                   aria-current={pathname === '/about' ? 'page' : undefined}
-                  className={`w-full py-3 flex items-center justify-between text-base font-bold hover:text-[#0033FF] transition-colors ${
-                    pathname === '/about' ? 'text-[#0033FF]' : 'text-[#00003C]'
+                  className={`w-full py-3 flex items-center justify-between text-base font-bold transition-colors ${
+                    pathname === '/about' ? 'text-[#0033FF]' : 'text-[#00003C] hover:text-[#0033FF]'
                   }`}
                 >
-                  <span>About Zapledge</span>
+                  <span>About</span>
                   <span className="text-gray-400 font-normal">→</span>
                 </Link>
               </div>
 
-              {/* Category 5: Contact Page Link */}
+              {/* Item 5: Blogs (Direct Link) */}
+              <div className="py-2">
+                <Link
+                  href="/blog"
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-current={pathname.startsWith('/blog') ? 'page' : undefined}
+                  className={`w-full py-3 flex items-center justify-between text-base font-bold transition-colors ${
+                    pathname.startsWith('/blog') ? 'text-[#0033FF]' : 'text-[#00003C] hover:text-[#0033FF]'
+                  }`}
+                >
+                  <span>Blogs</span>
+                  <span className="text-gray-400 font-normal">→</span>
+                </Link>
+              </div>
+
+              {/* Item 6: Contact (Direct Link) */}
               <div className="py-2">
                 <Link
                   href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full py-3 flex items-center justify-between text-base font-bold text-[#00003C] hover:text-[#0033FF] transition-colors"
+                  aria-current={pathname === '/contact' ? 'page' : undefined}
+                  className={`w-full py-3 flex items-center justify-between text-base font-bold transition-colors ${
+                    pathname === '/contact' ? 'text-[#0033FF]' : 'text-[#00003C] hover:text-[#0033FF]'
+                  }`}
                 >
-                  <span>Contact Us</span>
+                  <span>Contact</span>
                   <span className="text-gray-400 font-normal">→</span>
                 </Link>
               </div>
-            </div>
-
-            {/* Prominent CTA Consultation Action inside Mobile Menu */}
-            <div className="p-6 border-t border-[#E5E5E5] bg-gray-50/80">
-              <AnimatedButton
-                href="/contact"
-                variant="primary"
-                size="md"
-                className="w-full font-semibold justify-center text-center shadow-md"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Get Free Consultation
-              </AnimatedButton>
             </div>
           </div>
         </div>

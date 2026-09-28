@@ -319,7 +319,7 @@ export const IndustriesSection: React.FC = () => {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0033FF]" />
             </span>
             <span className="text-xs font-bold tracking-wider text-[#0033FF]">
-              Industries
+              INDUSTRIES
             </span>
           </div>
 
@@ -371,8 +371,8 @@ export const IndustriesSection: React.FC = () => {
                   >
                     <span
                       className={`block font-bold tracking-tight leading-[1.14] transition-colors duration-200 text-2xl sm:text-3xl lg:text-[34px] xl:text-[40px] 2xl:text-[44px] ${isActive
-                          ? 'text-[#00003C]'
-                          : 'text-[#555555] group-hover:text-[#00003C] group-focus-visible:text-[#00003C]'
+                        ? 'text-[#00003C]'
+                        : 'text-[#555555] group-hover:text-[#00003C] group-focus-visible:text-[#00003C]'
                         }`}
                     >
                       {industry.name}
@@ -434,7 +434,7 @@ export const IndustriesSection: React.FC = () => {
                       />
                       {/* Subtle scrim for label legibility only — image stays natural, no heavy overlay */}
                       <span
-                        className={`absolute inset-0 bg-gradient-to-b from-[#00003C]/45 to-transparent transition-opacity duration-500 ease-out opacity-70 group-hover:opacity-90 group-focus-within:opacity-90 ${isTapped ? 'opacity-90' : ''
+                        className={`absolute inset-0 bg-gradient-to-b from-[#00003C]/85 to-[#00003C]/20 transition-opacity duration-500 ease-out opacity-85 group-hover:opacity-95 group-focus-within:opacity-95 ${isTapped ? 'opacity-95' : ''
                           }`}
                       />
                     </span>

@@ -7,11 +7,9 @@ import TrustedBy from '@/components/about/TrustedBy';
 import Testimonial from '@/components/about/Testimonial';
 import AboutFaq from '@/components/about/AboutFaq';
 import FinalCta from '@/components/about/FinalCta';
-import { aboutMeta } from '@/content/about';
-
 export const metadata: Metadata = {
-  title: aboutMeta.title,
-  description: aboutMeta.description,
+  title: 'About Zapledge | AI Consulting & Engineering in Kochi',
+  description: 'Zapledge is an AI consulting and engineering company based in Kochi, Kerala, founded in 2025, helping Indian businesses build practical AI solutions.',
 };
 
 // Navbar and the curtain → footer reveal come from the root layout.

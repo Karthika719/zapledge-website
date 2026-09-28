@@ -7,11 +7,10 @@ import Modules from '@/components/industry/healthtech/Modules';
 import Workflow from '@/components/industry/healthtech/Workflow';
 import Faq from '@/components/industry/healthtech/Faq';
 import CTA from '@/components/industry/healthtech/CTA';
-import { hero } from '@/content/industries/healthtech';
-
 export const metadata: Metadata = {
-  title: 'HealthTech Software & Patient Operations',
-  description: hero.subheadline,
+  title: 'AI-Powered HealthTech Software & Patient Ops | Zapledge',
+  description:
+    'Zapledge builds AI-powered healthtech software for patient scheduling, records, billing, and admin workflows, keeping clinical decisions with providers.',
 };
 
 export default function HealthTechPage() {

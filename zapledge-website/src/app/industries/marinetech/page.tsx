@@ -7,11 +7,10 @@ import Modules from '@/components/industry/marinetech/Modules';
 import Workflow from '@/components/industry/marinetech/Workflow';
 import Faq from '@/components/industry/marinetech/Faq';
 import CTA from '@/components/industry/marinetech/CTA';
-import { hero } from '@/content/industries/marinetech';
-
 export const metadata: Metadata = {
-  title: 'MarineTech Software & Fleet Automation',
-  description: hero.subheadline,
+  title: 'AI-Powered MarineTech Software & Fleet Automation | Zapledge',
+  description:
+    'Zapledge builds AI-powered marinetech software for fleet visibility, maintenance, crew compliance, and port-call coordination. Get a free consultation.',
 };
 
 export default function MarineTechPage() {
