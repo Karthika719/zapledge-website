@@ -51,10 +51,12 @@ export const hero = {
   },
 } as const;
 
-export const overview = {
-  label: 'Building Production-Ready AI for Real Business Workflows',
-  body: "Once you know the AI capability you need, someone has to build it: securely, at the right scale, and connected to the systems you already run on. Zapledge's AI Engineering team designs and builds the applications, agents, integrations, and data infrastructure that turn an AI idea into working software.",
-  supporting: 'This is where we start when you already have a defined AI product or system requirement.',
+export const intro = {
+  eyebrow: 'Building Production-Ready AI for Real Business Workflows',
+  statement:
+    'Once you know the AI capability you need, someone has to build it: securely, at the right scale, and connected to the systems you already run on.',
+  body: "Zapledge's AI Engineering team designs and builds the applications, agents, integrations, and data infrastructure that turn an AI idea into working software.",
+  note: 'This is where we start when you already have a defined AI product or system requirement.',
 } as const;
 
 export const capabilities = {

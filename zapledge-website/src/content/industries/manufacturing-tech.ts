@@ -171,3 +171,58 @@ export const workflow = {
     },
   ],
 };
+
+export const faq = {
+  label: 'FAQs',
+  headline: 'Frequently Asked Questions About Manufacturing Tech',
+  items: [
+    {
+      question: 'Can Zapledge integrate with our existing ERP instead of replacing it?',
+      answer:
+        'Yes. Most manufacturing clients already have systems worth keeping. We connect at the API and data layer so your existing ERP, accounting, or inventory tools stay in place where it makes sense, and we build around the gaps rather than forcing a full rip-and-replace.',
+    },
+    {
+      question: "Do we need years of historical data before AI features like demand forecasting are useful?",
+      answer:
+        "Some history helps accuracy, but we scope AI use cases like forecasting or predictive maintenance to the data you actually have, not the data you'd ideally have. We'll tell you upfront if a use case isn't reliable yet with your current data.",
+    },
+    {
+      question: 'How much does a manufacturing automation project with Zapledge cost?',
+      answer:
+        "Pricing depends on the modules and scope you need. A single automation, like procurement alerts, costs far less than a full ERP build. We scope every engagement around your actual priorities first, so you're not paying for capability you won't use, and you'll get a clear cost picture before any work starts.",
+    },
+    {
+      question: 'Is our production and business data safe with Zapledge?',
+      answer:
+        "Yes. Your production data, supplier information, and business records stay under your control. We don't use your data to train tools for other clients, and access is scoped by role so only the right people see the right information. We're happy to put data handling terms in writing before the project starts.",
+    },
+    {
+      question: 'How long does a typical manufacturing operations project take?',
+      answer:
+        'It depends on scope, but we work in phases (discover, prioritize, architect, build) so you see working modules going live before the entire system is finished, rather than waiting months for a single big-bang launch.',
+    },
+    {
+      question: 'Does this work for a single-site factory, or only multi-plant manufacturers?',
+      answer:
+        'Both. The same modules, production tracking, inventory, QC, dispatch, scale down to a single site just as well as they scale up across multiple plants.',
+    },
+    {
+      question: 'Is this the same as generic production tracking software?',
+      answer:
+        'Not quite. Off-the-shelf production tracking software gives you visibility alone. Zapledge builds full manufacturing operations management: production tracking plus procurement, quality, dispatch, and AI, all connected as one system rather than a single tool bolted onto your existing setup.',
+    },
+    {
+      question: 'What happens after launch? Do we need our own team to maintain it?',
+      answer:
+        "No. Zapledge provides ongoing optimization and support after deployment, so you're not left maintaining a custom system on your own.",
+    },
+  ],
+};
+
+export const cta = {
+  label: "Let's Talk",
+  headline: "Ready to Fix What's Slowing Down Your Floor?",
+  body: "Tell us what's slowing down your production floor. We'll map the process and show you exactly where automation and AI can help.",
+  primaryCta: { label: 'Request a Quote →', href: '/contact' },
+  emails: ['sales@zapledge.com', 'info@zapledge.com'],
+};

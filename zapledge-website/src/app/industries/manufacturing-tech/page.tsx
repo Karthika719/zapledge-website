@@ -5,6 +5,8 @@ import CaseStudy from '@/components/industry/manufacturing-tech/CaseStudy';
 import Bottlenecks from '@/components/industry/manufacturing-tech/Bottlenecks';
 import Modules from '@/components/industry/manufacturing-tech/Modules';
 import Workflow from '@/components/industry/manufacturing-tech/Workflow';
+import Faq from '@/components/industry/manufacturing-tech/Faq';
+import CTA from '@/components/industry/manufacturing-tech/CTA';
 import { hero } from '@/content/industries/manufacturing-tech';
 
 export const metadata: Metadata = {
@@ -21,6 +23,8 @@ export default function ManufacturingTechPage() {
       <Bottlenecks />
       <Modules />
       <Workflow />
+      <Faq />
+      <CTA />
     </main>
   );
 }

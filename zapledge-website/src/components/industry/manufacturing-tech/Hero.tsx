@@ -55,9 +55,9 @@ export const Hero: React.FC = () => {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <div className="flex justify-center">
           {/* Left Column */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
+          <div className="flex w-full max-w-4xl flex-col items-center text-center">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0033FF]/5 border border-[#0033FF]/15 mb-6">
               <span className="relative flex h-2 w-2">
                 <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0033FF] opacity-75" />
@@ -88,62 +88,7 @@ export const Hero: React.FC = () => {
             </Link>
           </div>
 
-          {/* Right Column: connected operations concept */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div
-              className="w-full max-w-md rounded-3xl bg-white border border-[#E5E5E5] p-5 sm:p-6 shadow-xl relative overflow-hidden"
-              role="img"
-              aria-label="Concept view of connected manufacturing operations: Enquiry, Quotation, Production, Quality, Dispatch"
-            >
-              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#0033FF] to-[#00003C]" />
-
-              <div className="flex items-center justify-between pb-3">
-                <span className="text-[11px] font-bold tracking-wider uppercase text-[#00003C]">
-                  Order flow
-                </span>
-                <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-600">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 motion-safe:animate-pulse" />
-                  Live
-                </span>
-              </div>
-
-              {/* Overall progress */}
-              <div className="h-1.5 w-full rounded-full bg-[#0033FF]/10 overflow-hidden mb-4">
-                <div className="mfg-bar h-full rounded-full bg-gradient-to-r from-[#0033FF] to-[#00003C]" />
-              </div>
-
-              <ol className="relative space-y-2" aria-hidden="true">
-                <span className="absolute left-[19px] top-6 bottom-6 w-px bg-[#0033FF]/20" />
-                {STAGES.map((s, i) => (
-                  <li
-                    key={s.name}
-                    className={`mfg-row ${i === 2 ? 'mfg-row-2' : ''} relative flex items-center gap-3 rounded-xl border border-[#E5E5E5] bg-white px-3 py-2.5`}
-                    style={{ animationDelay: `${(i * CYCLE) / STAGES.length}s` }}
-                  >
-                    <span
-                      className={`mfg-node ${i === 2 ? 'mfg-node-2' : ''} relative z-10 h-3 w-3 shrink-0 rounded-full border-2 border-[#0033FF] bg-white`}
-                      style={{ animationDelay: `${(i * CYCLE) / STAGES.length}s` }}
-                    />
-                    <div className="min-w-0 flex-1">
-                      <p className="text-sm font-bold text-[#00003C] leading-tight">{s.name}</p>
-                      <p className="text-[11px] text-[#666666] truncate leading-snug">{s.detail}</p>
-                    </div>
-                    <span
-                      className="mfg-status text-[11px] font-mono font-semibold whitespace-nowrap"
-                      style={{ animationDelay: `${(i * CYCLE) / STAGES.length}s` }}
-                    >
-                      {s.status}
-                    </span>
-                  </li>
-                ))}
-              </ol>
-
-              <div className="mt-4 pt-3 border-t border-[#E5E5E5] flex items-center justify-between text-[11px] text-[#666666]">
-                <span>Handoffs automated between stages</span>
-                <span className="font-semibold text-[#0033FF]">Concept view</span>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </section>

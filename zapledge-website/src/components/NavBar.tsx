@@ -24,16 +24,16 @@ const whatWeDoServices: NavLinkItem[] = [
 // Actual priority & secondary industries as defined in IndustriesSection
 const priorityIndustries: NavLinkItem[] = [
   { label: 'Manufacturing Tech', href: '/industries/manufacturing-tech' },
-  { label: 'FinTech', href: '/industries#fintech' },
-  { label: 'WealthTech', href: '/industries#wealthtech' },
-  { label: 'HealthTech', href: '/industries#healthtech' },
+  { label: 'FinTech', href: '/industries/fintech' },
+  { label: 'WealthTech', href: '/industries/wealthtech' },
+  { label: 'HealthTech', href: '/industries/healthtech' },
 ];
 
 const secondaryIndustries: NavLinkItem[] = [
-  { label: 'EdTech', href: '/industries#edtech' },
-  { label: 'MarineTech', href: '/industries#marinetech' },
-  { label: 'Construction', href: '/industries#construction' },
-  { label: 'Retail', href: '/industries#retail' },
+  { label: 'EdTech', href: '/industries/edtech' },
+  { label: 'MarineTech', href: '/industries/marinetech' },
+  { label: 'Construction', href: '/industries/construction' },
+  { label: 'Retail', href: '/industries/retail' },
 ];
 
 export const NavBar: React.FC = () => {

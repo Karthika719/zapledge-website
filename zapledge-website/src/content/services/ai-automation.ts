@@ -51,10 +51,16 @@ export const hero = {
   },
 } as const;
 
-export const overview = {
-  label: 'Remove the Repetitive Work Slowing Your Team Down',
-  body: "Every business has work that shouldn't need a person doing it manually: data entry, follow-ups, approvals, and moving information between systems. Zapledge's AI Automation services take that repetitive, decision-heavy work off your team's plate, using AI only where real intelligence is needed and keeping people in control where judgment matters.",
-  supporting: 'This is where we start when you already know exactly which manual process needs to go.',
+export const intro = {
+  eyebrow: 'Remove the Repetitive Work Slowing Your Team Down',
+  statement:
+    "Every business has work that shouldn't need a person doing it manually: data entry, follow-ups, approvals, and moving information between systems.",
+  body: "Zapledge's AI Automation services take that repetitive, decision-heavy work off your team's plate, using AI only where real intelligence is needed and keeping people in control where judgment matters.",
+  highlights: [
+    'using AI only where real intelligence is needed',
+    'keeping people in control where judgment matters',
+  ],
+  note: 'This is where we start when you already know exactly which manual process needs to go.',
 } as const;
 
 export const capabilities = {

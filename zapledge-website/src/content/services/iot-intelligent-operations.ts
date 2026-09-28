@@ -51,10 +51,13 @@ export const hero = {
   },
 } as const;
 
-export const overview = {
-  label: 'Connect Your Physical Operations to Intelligent Software',
-  body: "If you don't know what's happening on your factory floor or with your equipment right now, decisions get made on guesswork instead of data. Zapledge's IoT & Intelligent Operations services connect machines, sensors, and physical environments into software, turning raw signals into real-time visibility, dashboards, and predictive alerts.",
-  supporting: 'This is where we start when your challenge depends on machines, sensors, or physical operations.',
+export const intro = {
+  eyebrow: 'Connect Your Physical Operations to Intelligent Software',
+  statement:
+    "If you don't know what's happening on your factory floor or with your equipment right now, decisions get made on guesswork instead of data.",
+  statementEmphasis: 'guesswork instead of data.',
+  body: "Zapledge's IoT & Intelligent Operations services connect machines, sensors, and physical environments into software, turning raw signals into real-time visibility, dashboards, and predictive alerts.",
+  note: 'This is where we start when your challenge depends on machines, sensors, or physical operations.',
 } as const;
 
 export const capabilities = {

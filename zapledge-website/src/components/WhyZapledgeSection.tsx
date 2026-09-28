@@ -2,14 +2,14 @@
 
 import React from 'react';
 
-interface ValuePillar {
+export interface ValuePillar {
   id: string;
   number: string;
   title: string;
   description: string;
 }
 
-const valuePillars: ValuePillar[] = [
+const defaultValuePillars: ValuePillar[] = [
   {
     id: 'customized',
     number: '01',
@@ -42,11 +42,27 @@ const valuePillars: ValuePillar[] = [
   },
 ];
 
-export const WhyZapledgeSection: React.FC = () => {
+export interface WhyZapledgeSectionProps {
+  sectionId?: string;
+  label?: string;
+  headline?: string;
+  /** Optional — the original design has no intro paragraph slot; only
+      rendered when provided, so pages with their own intro copy keep it. */
+  intro?: string;
+  items?: ValuePillar[];
+}
+
+export const WhyZapledgeSection: React.FC<WhyZapledgeSectionProps> = ({
+  sectionId = 'why-zapledge',
+  label = 'Why Zapledge',
+  headline = 'Why Choose Zapledge for Practical AI Solutions',
+  intro,
+  items = defaultValuePillars,
+}) => {
   return (
     <section
-      id="why-zapledge"
-      aria-label="Why Zapledge"
+      id={sectionId}
+      aria-label={label}
       className="w-full py-20 sm:py-24 lg:py-28 px-6 sm:px-8 md:px-12 lg:px-16 relative light-section-tint border-b border-[#E5E5E5]/80"
     >
       {/* Ambient background light accents (contained to prevent overflow without breaking sticky) */}
@@ -71,19 +87,25 @@ export const WhyZapledgeSection: React.FC = () => {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0033FF]" />
               </span>
               <span className="text-xs font-bold tracking-wider text-[#0033FF] uppercase">
-                Why Zapledge
+                {label}
               </span>
             </div>
 
             {/* Main Display Headline */}
             <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#00003C] tracking-tight leading-[1.14] max-w-xl lg:max-w-none">
-              Why Choose Zapledge for Practical AI Solutions
+              {headline}
             </h2>
+
+            {intro && (
+              <p className="mt-5 text-base sm:text-lg leading-relaxed text-[#555555] max-w-xl lg:max-w-none">
+                {intro}
+              </p>
+            )}
           </div>
 
           {/* RIGHT COLUMN: 5 Horizontally Stacked Cards */}
           <div className="lg:col-span-7 flex flex-col space-y-4">
-            {valuePillars.map((pillar) => (
+            {items.map((pillar) => (
               <article
                 key={pillar.id}
                 className="group bg-white rounded-2xl border border-[#E5E5E5]/90 p-6 sm:p-7 shadow-[0_4px_20px_-2px_rgba(0,0,60,0.04)] hover:shadow-[0_12px_30px_-4px_rgba(0,51,255,0.08),0_4px_12px_-2px_rgba(0,0,60,0.03)] hover:border-[#0033FF]/40 transition-all duration-300"

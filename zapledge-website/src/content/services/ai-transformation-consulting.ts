@@ -51,11 +51,19 @@ export const hero = {
   },
 } as const;
 
-export const overview = {
-  label: 'From AI Strategy to Business Transformation',
-  body: "You know AI can improve how your business runs, but knowing where to start, what's realistic, and how to get your organization ready is the harder part. Zapledge's AI Transformation & Consulting services combine strategic advice with practical, hands-on transformation, helping you understand where AI creates value, prepare the right foundations, redesign how work happens, and implement AI in a structured, measurable way.",
-  supporting:
-    'This is where most engagements begin, especially for businesses that want a company-wide AI journey rather than a single tool.',
+export const intro = {
+  eyebrow: 'From AI Strategy to Business Transformation',
+  statement:
+    "You know AI can improve how your business runs, but knowing where to start, what's realistic, and how to get your organization ready is the harder part.",
+  statementEmphasis: 'the harder part.',
+  body: "Zapledge's AI Transformation & Consulting services combine strategic advice with practical, hands-on transformation, helping you understand where AI creates value, prepare the right foundations, redesign how work happens, and implement AI in a structured, measurable way.",
+  highlights: [
+    'understand where AI creates value',
+    'prepare the right foundations',
+    'redesign how work happens',
+    'implement AI in a structured, measurable way',
+  ],
+  note: 'This is where most engagements begin, especially for businesses that want a company-wide AI journey rather than a single tool.',
 } as const;
 
 export const capabilities = {
