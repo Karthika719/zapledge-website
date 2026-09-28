@@ -10,7 +10,7 @@ export default function HomeCTASection() {
     <section
       id="lets-talk"
       aria-labelledby="lets-talk-title"
-      className="bg-[#FAFAFA] bg-[radial-gradient(90%_80%_at_50%_0%,rgba(0,51,255,0.12),rgba(0,51,255,0)_70%)] px-6 pt-16 pb-[72px] md:bg-[radial-gradient(70%_90%_at_50%_0%,rgba(0,51,255,0.12),rgba(0,51,255,0)_70%)] md:px-14 md:pt-[88px] md:pb-24 lg:bg-[radial-gradient(55%_90%_at_50%_0%,rgba(0,51,255,0.12),rgba(0,51,255,0)_70%)] lg:px-24 lg:pt-[104px] lg:pb-28"
+      className="w-full py-20 sm:py-24 lg:py-28 px-6 sm:px-8 md:px-12 lg:px-16 relative bg-white bg-[radial-gradient(90%_80%_at_50%_0%,rgba(0,51,255,0.12),rgba(0,51,255,0)_70%)] md:bg-[radial-gradient(70%_90%_at_50%_0%,rgba(0,51,255,0.12),rgba(0,51,255,0)_70%)] lg:bg-[radial-gradient(55%_90%_at_50%_0%,rgba(0,51,255,0.12),rgba(0,51,255,0)_70%)]"
     >
       <div className="mx-auto flex max-w-[1000px] flex-col items-center gap-4 text-center md:gap-5">
         <div className="inline-flex items-center gap-2 rounded-full border border-[#E5E5E5] bg-white px-3.5 py-[7px] md:px-4 md:py-2">

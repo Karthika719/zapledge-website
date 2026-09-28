@@ -55,9 +55,9 @@ export const Hero: React.FC = () => {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <div className="flex justify-center">
           {/* Left Column */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
+          <div className="flex w-full max-w-4xl flex-col items-center text-center">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0033FF]/5 border border-[#0033FF]/15 mb-6">
               <span className="relative flex h-2 w-2">
                 <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0033FF] opacity-75" />
@@ -88,62 +88,7 @@ export const Hero: React.FC = () => {
             </Link>
           </div>
 
-          {/* Right Column: connected retail operations concept */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div
-              className="w-full max-w-md rounded-3xl bg-white border border-[#E5E5E5] p-5 sm:p-6 shadow-xl relative overflow-hidden"
-              role="img"
-              aria-label="Concept view of connected retail operations: Product Setup, Purchase Inbound, Stock Inventory, POS Online Sales, Fulfilment Loyalty"
-            >
-              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#0033FF] to-[#00003C]" />
-
-              <div className="flex items-center justify-between pb-3">
-                <span className="text-[11px] font-bold tracking-wider uppercase text-[#00003C]">
-                  Omnichannel retail flow
-                </span>
-                <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-600">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 motion-safe:animate-pulse" />
-                  Live Sync
-                </span>
-              </div>
-
-              {/* Overall progress */}
-              <div className="h-1.5 w-full rounded-full bg-[#0033FF]/10 overflow-hidden mb-4">
-                <div className="rt-bar h-full rounded-full bg-gradient-to-r from-[#0033FF] to-[#00003C]" />
-              </div>
-
-              <ol className="relative space-y-2" aria-hidden="true">
-                <span className="absolute left-[19px] top-6 bottom-6 w-px bg-[#0033FF]/20" />
-                {STAGES.map((s, i) => (
-                  <li
-                    key={s.name}
-                    className={`rt-row ${i === 2 ? 'rt-row-2' : ''} relative flex items-center gap-3 rounded-xl border border-[#E5E5E5] bg-white px-3 py-2.5`}
-                    style={{ animationDelay: `${(i * CYCLE) / STAGES.length}s` }}
-                  >
-                    <span
-                      className={`rt-node ${i === 2 ? 'rt-node-2' : ''} relative z-10 flex h-4 w-4 shrink-0 rounded-full border-2 border-white bg-white`}
-                      style={{ animationDelay: `${(i * CYCLE) / STAGES.length}s` }}
-                    />
-                    <div className="min-w-0 flex-1">
-                      <p className="text-xs font-bold text-[#00003C] truncate">{s.name}</p>
-                      <p className="text-[10px] text-[#666666] truncate">{s.detail}</p>
-                    </div>
-                    <span
-                      className="rt-status text-[11px] font-semibold shrink-0"
-                      style={{ animationDelay: `${(i * CYCLE) / STAGES.length}s` }}
-                    >
-                      {s.status}
-                    </span>
-                  </li>
-                ))}
-              </ol>
-
-              <div className="pt-3 mt-3 border-t border-[#E5E5E5] flex items-center justify-between text-[11px] text-[#666666]">
-                <span>In-store and online connected</span>
-                <span className="font-semibold text-[#0033FF]">Single shop to chain</span>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </section>

@@ -532,7 +532,7 @@ export const GradientCarousel: React.FC<GradientCarouselProps> = ({ label, headl
     return (
       <section
         aria-labelledby={headingId}
-        className="w-full py-20 sm:py-24 lg:py-28 px-6 sm:px-8 md:px-12 lg:px-16 relative bg-off-white border-b border-border-subtle/80"
+        className="w-full py-20 sm:py-24 lg:py-28 px-6 sm:px-8 md:px-12 lg:px-16 relative light-section-tint border-b border-border-subtle/80"
       >
         {header}
         <ul className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 list-none m-0 p-0">
@@ -550,7 +550,7 @@ export const GradientCarousel: React.FC<GradientCarouselProps> = ({ label, headl
     <section
       aria-labelledby={headingId}
       aria-roledescription="carousel"
-      className="w-full py-20 sm:py-24 lg:py-28 px-6 sm:px-8 md:px-12 lg:px-16 relative bg-off-white border-b border-border-subtle/80 overflow-hidden"
+      className="w-full py-20 sm:py-24 lg:py-28 px-6 sm:px-8 md:px-12 lg:px-16 relative light-section-tint border-b border-border-subtle/80 overflow-hidden"
     >
       {header}
       <GradientCarouselStage

@@ -307,7 +307,7 @@ export const IndustriesSection: React.FC = () => {
       ref={sectionRef}
       id="industries"
       aria-labelledby="industries-heading"
-      className="w-full scroll-mt-[72px] py-12 sm:py-16 lg:py-8 xl:py-10 px-6 sm:px-8 md:px-12 lg:px-16 relative bg-[#FAFAFA] border-b border-[#E5E5E5]/80 overflow-hidden"
+      className="w-full scroll-mt-[72px] py-20 sm:py-24 lg:py-28 px-6 sm:px-8 md:px-12 lg:px-16 relative light-section-tint border-b border-[#E5E5E5]/80 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto flex flex-col justify-center">
         {/* Section Header: Compact on desktop */}

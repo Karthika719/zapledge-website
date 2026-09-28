@@ -107,7 +107,8 @@ const SLIDES: SlideData[] = [
     dateOrLocation: 'Coming Soon • Online Live Session',
     ctaText: 'Register Interest',
     ctaHref: '/contact',
-    // Inherits default global theme tokens (supports optional theme override object)
+    layout: 'split',
+    imageUrl: '/images/carousel-test/5b9c63dc-bf1a-41b3-ad7b-c924314c3e96.png',
   },
   {
     id: 'mock-event-2',
@@ -119,9 +120,10 @@ const SLIDES: SlideData[] = [
     dateOrLocation: 'Available Now',
     ctaText: 'Learn More',
     ctaHref: '/services#transformation',
-    // Inherits default global theme tokens (supports optional theme override object)
+    layout: 'fullbleed',
+    imageUrl:
+      '/images/carousel-test/professional-online-business-webinar-banner-with-blue-theme-modern-design-and-placeholder-for-speaker-information-and-event-details-vector.jpg',
   },
-  
 ];
 
 const AUTO_ROTATE_INTERVAL_MS = 7000;
@@ -246,10 +248,16 @@ export const HeroSection: React.FC = () => {
         {slide.subheadline}
       </p>
     ) : slide.dateOrLocation ? (
-      <div className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold px-3 py-1 rounded-lg bg-white/70 border border-[#E5E5E5] mb-4 text-[#00003C] shadow-xs">
+      <div
+        className={`inline-flex items-center gap-2 text-sm sm:text-base font-semibold px-3.5 py-1.5 rounded-lg mb-4 shadow-xs backdrop-blur-sm transition-colors ${
+          onDark
+            ? 'bg-white/15 border border-white/20 text-white'
+            : 'bg-white/70 border border-[#E5E5E5] text-[#00003C]'
+        }`}
+      >
         <svg
-          className="w-4 h-4"
-          style={{ color: currentAccent }}
+          className="w-4 h-4 shrink-0"
+          style={{ color: onDark ? colors.accentOnDark : currentAccent }}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -357,6 +365,35 @@ export const HeroSection: React.FC = () => {
         />
       </div>
 
+      {/* Edge-to-edge fullbleed slide background image & overlay for Slide 3 */}
+      {SLIDES.map((slide, index) => {
+        if (slide.layout !== 'fullbleed' || !slide.imageUrl) return null;
+        const isActive = index === currentIndex;
+        return (
+          <div
+            key={`fullbleed-bg-${slide.id}`}
+            aria-hidden="true"
+            className={`absolute inset-0 pointer-events-none transition-opacity duration-700 ease-out ${
+              isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            }`}
+          >
+            <Image
+              src={slide.imageUrl}
+              alt=""
+              fill
+              priority={index === 0}
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+            {/* Scrim overlay for text readability */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{ backgroundImage: FULLBLEED_SCRIM }}
+            />
+          </div>
+        );
+      })}
+
       {/* ========================================================================= */}
       {/* SLIDES STACK CONTAINER                                                    */}
       {/* ========================================================================= */}
@@ -379,7 +416,7 @@ export const HeroSection: React.FC = () => {
                   {renderCta(slide, 'start')}
                 </div>
                 <div
-                  className="relative flex-1 min-h-[240px] sm:min-h-[300px] lg:min-h-0 overflow-hidden shadow-sm"
+                  className="relative flex-1 w-full min-h-[260px] sm:min-h-[340px] lg:min-h-0 self-stretch overflow-hidden shadow-sm"
                   style={{ borderRadius: radii.cardLg, backgroundColor: colors.accentSoft }}
                 >
                   {slide.imageUrl && (
@@ -389,42 +426,21 @@ export const HeroSection: React.FC = () => {
                       fill
                       sizes="(min-width: 1024px) 480px, 100vw"
                       priority={index === 0}
-                      className="object-cover"
+                      className="object-cover object-center"
                     />
                   )}
                 </div>
               </div>
             );
           } else if (layout === 'fullbleed') {
-            // FULLBLEED: image fills the slide card, scrim keeps copy legible.
+            // FULLBLEED: copy centered over the edge-to-edge section background image.
             content = (
-              <div
-                className="relative flex-1 w-full flex flex-col items-center justify-center overflow-hidden px-6 sm:px-12 py-8 shadow-sm"
-                style={{ borderRadius: radii.cardLg, backgroundImage: slide.imageUrl ? undefined : colors.ctaGradient }}
-              >
-                {slide.imageUrl && (
-                  <Image
-                    src={slide.imageUrl}
-                    alt=""
-                    fill
-                    // Narrow viewports: cover scales by height, so the drawn width exceeds 100vw
-                    sizes="(min-width: 1024px) 1024px, 1080px"
-                    priority={index === 0}
-                    className="object-cover"
-                  />
-                )}
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  aria-hidden="true"
-                  style={{ backgroundImage: FULLBLEED_SCRIM }}
-                />
-                <div className="relative z-10 flex flex-col items-center">
-                  {renderBadge(slide, true)}
-                  {renderTitle(slide, { onDark: true })}
-                  {renderSubheadline(slide, true)}
-                  {renderDescription(slide, true)}
-                  {renderCta(slide)}
-                </div>
+              <div className="w-full flex flex-col items-center justify-center text-center">
+                {renderBadge(slide, true)}
+                {renderTitle(slide, { onDark: true })}
+                {renderSubheadline(slide, true)}
+                {renderDescription(slide, true)}
+                {renderCta(slide)}
               </div>
             );
           } else {
@@ -465,6 +481,7 @@ export const HeroSection: React.FC = () => {
         <div className="relative z-30 flex items-center justify-center gap-2 mt-8">
           {SLIDES.map((slide, index) => {
             const isActive = index === currentIndex;
+            const isFullBleedActive = activeSlide?.layout === 'fullbleed';
 
             return (
               <button
@@ -478,7 +495,11 @@ export const HeroSection: React.FC = () => {
                     : 'w-2.5 h-2.5 opacity-40 hover:opacity-80'
                   }`}
                 style={{
-                  backgroundColor: isActive ? colors.accent : colors.navy,
+                  backgroundColor: isActive
+                    ? colors.accent
+                    : isFullBleedActive
+                    ? colors.white
+                    : colors.navy,
                 }}
               />
             );

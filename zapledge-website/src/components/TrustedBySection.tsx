@@ -115,10 +115,10 @@ export function TrustedBySection() {
 
       <section
         id="trusted-by"
-        className="relative w-full py-16 md:py-24 border-t border-gray-100 overflow-hidden"
-        style={{ backgroundColor: '#FAFAFA' }}
+        aria-label="Trusted by Businesses Across India"
+        className="relative w-full py-20 sm:py-24 lg:py-28 px-6 sm:px-8 md:px-12 lg:px-16 light-section-tint border-b border-[#E5E5E5]/80 overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-6 w-full">
+        <div className="max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* LEFT COLUMN — SECTION HEADER */}
             <div className="lg:col-span-5 flex flex-col items-start">
@@ -159,7 +159,7 @@ export function TrustedBySection() {
                     gap={16}
                     logoHeight={70}
                     fadeOut={true}
-                    fadeOutColor="#FAFAFA"
+                    fadeOutColor="#FFFFFF"
                     ariaLabel="Client logos column 1"
                   />
                 </div>
@@ -173,7 +173,7 @@ export function TrustedBySection() {
                     gap={16}
                     logoHeight={70}
                     fadeOut={true}
-                    fadeOutColor="#FAFAFA"
+                    fadeOutColor="#FFFFFF"
                     ariaLabel="Client logos column 2"
                   />
                 </div>
@@ -187,7 +187,7 @@ export function TrustedBySection() {
                     gap={16}
                     logoHeight={70}
                     fadeOut={true}
-                    fadeOutColor="#FAFAFA"
+                    fadeOutColor="#FFFFFF"
                     ariaLabel="Client logos column 3"
                   />
                 </div>

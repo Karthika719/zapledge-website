@@ -198,14 +198,15 @@ export const WhatWeDoSection: React.FC = () => {
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
-    const mq = window.matchMedia('(min-width: 1200px)');
+    const mq = window.matchMedia('(min-width: 1024px)');
 
     const siteNavHeight = () => {
       const header = document.querySelector('body > header');
       return header ? header.getBoundingClientRect().height : 96;
     };
     const stageToNavGap = (vh: number) => (vh <= 720 ? 20 : vh <= 820 ? 32 : 50);
-    const bottomPadding = (vh: number) => clamp(24, vh * 0.04, 64);
+    // Standard desktop section bottom padding (112px / lg:py-28)
+    const bottomPadding = 112;
 
     const update = () => {
       if (!mq.matches) return;
@@ -215,7 +216,7 @@ export const WhatWeDoSection: React.FC = () => {
       section.style.setProperty('--site-nav-h', `${siteNavH}px`);
 
       const availableHeight = vh - siteNavH;
-      const raw = availableHeight - stageToNavGap(vh) - navH - bottomPadding(vh) - 16;
+      const raw = availableHeight - stageToNavGap(vh) - navH - bottomPadding - 16;
       const stageH = clamp(380, raw, 560);
       section.style.setProperty('--stage-h', `${stageH}px`);
     };
@@ -297,7 +298,7 @@ export const WhatWeDoSection: React.FC = () => {
       ref={sectionRef}
       id="what-we-do"
       aria-labelledby="wwd-heading"
-      className="wwd-section"
+      className="wwd-section w-full py-20 sm:py-24 lg:py-28 px-6 sm:px-8 md:px-12 lg:px-16 relative light-section-tint border-b border-[#E5E5E5]/80"
       onKeyDown={handleKeyDown}
     >
       <div className="wwd-container">
